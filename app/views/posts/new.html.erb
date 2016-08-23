@@ -1,3 +1,13 @@
+<!-- # ["title cant be blank", "body cant be blank"] -->
+
+<% if @post && @post.errors.full_messages %>
+  <ul>
+    <% @post.errors.full_messages.each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form action='/create_post' method='POST'>
   Title <input type="text" name='title' /> </br>
   Body <input type="text" name='body' /> </br>
