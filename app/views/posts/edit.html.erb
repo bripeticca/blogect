@@ -1,3 +1,11 @@
+<% if @post && @post.errors.full_messages %>
+  <ul>
+    <% @post.errors.full_messages.each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form action='/update_post' method='POST'>
         <input type="hidden" name="id" value='<%=@post.id%>' />
   Title <input type="text" name='title' value='<%=@post.title%>'/> </br>
