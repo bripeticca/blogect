@@ -1,6 +1,6 @@
 <!-- # ["title cant be blank", "body cant be blank"] -->
 
-<% if @post && @post.errors.full_messages %>
+<!-- <% if @post && @post.errors.full_messages %>
   <ul>
     <% @post.errors.full_messages.each do |e| %>
       <li><%= e %></li>
@@ -8,8 +8,19 @@
   </ul>
 <% end %>
 
-<form action='/create_post' method='POST'>
+<form action='/posts' method='POST'>
   Title <input type="text" name='title' /> </br>
   Body <input type="text" name='body' /> </br>
   <input type="submit" value="Create Post" />
-</form>
+</form> -->
+
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</br>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</br>
+  <%= f.submit %>
+<% end %>

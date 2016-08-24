@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params.permit(:body, :title))
     if @post.save
-      redirect_to "/show_post/#{post.id}"
+      redirect_to post_path(@post) # using prefix requires you to use path - prefixes are simpler way of accessing certain controllers i.e show
     else
       render 'new'
     end
@@ -25,8 +25,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params.permit(:body, :title))
-      redirect_to "/show_post/#{@post.id}"
+    if @post.update(params.require(:post).permit(:title, :body))
+      redirect_to post_path(@post)
     else
       render 'edit'
     end
