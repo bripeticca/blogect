@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts
-
+  resources :posts do
+    resources :comments, only: [:create]
+  end
 
   # get '/all_posts', to: 'posts#index'
   # get '/user', to: 'users#view'
